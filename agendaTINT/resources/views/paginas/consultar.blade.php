@@ -13,7 +13,7 @@
             @foreach($ids as $id)
             <tr>
                 <th>{{$id->id}}</th>
-                <th>{{$id->data}}</th>
+                <th>{{$id->dataEvento}}</th>
                 <th>{{$id->descricao}}</th>
                 <th>
                     <a href="/editar/{{$id->id}}">

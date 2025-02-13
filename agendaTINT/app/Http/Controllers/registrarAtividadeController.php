@@ -23,4 +23,29 @@ class registrarAtividadeController extends Controller
         $model->save();//Armazenar no banco
         return redirect('/cadastrar');
     }//fim do metodo cadastrar
+
+    public function consultar()
+    {
+        $ids = modelAgenda::all();// traz tudo
+        return view('paginas.consultar',compact('ids'));
+    }//fim do metodo consultar
+
+    public function editar($id)// traz só o reusultado id
+    {
+        $dado = modelAgenda::findOrFail($id);// guarda só o reusultado id
+        return view('paginas.editar',compact('dado'));
+    }//fim do metodo editar
+
+    public function atualizar(Request $request,$id)
+    {
+        modelAgenda::where('id',$id)->update($request->all());
+        return redirect('/consultar');
+    }//fim do metodo atualizar
+
+    public function excluir(Request $request,$id)
+    {
+        modelAgenda::where('id',$id)->delete($request->all());
+        return redirect('/consultar');
+    }//fim do metodo excluir
+
 }//Todas as operações do banco de dados
